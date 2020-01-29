@@ -1,0 +1,2 @@
+find `pwd` -name #!/bin/bash
+echo $pwd
