@@ -1,0 +1,2 @@
+#!/bin/bash
+find `pwd` -name 0-current_working_directoryq
