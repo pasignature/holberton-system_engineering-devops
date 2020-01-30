@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo find /home/vagrant/holberton-system_engineering-devops/0x01-shell_permissions/ -type d -exec chmod u+x,g+x,o+x {} \;
