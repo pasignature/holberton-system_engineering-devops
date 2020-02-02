@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -ld 0x02-shell_redirections/* | wc -l
+find -mindepth 1 -type d | wc -l
