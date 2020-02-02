@@ -1,0 +1,2 @@
+#!/bin/bash
+ls -ld 0x02-shell_redirections/* | wc -l
