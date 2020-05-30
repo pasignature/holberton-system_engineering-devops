@@ -1,0 +1,11 @@
+# Emacs Backup files with annoying ~
+*~
+*.~
+
+
+# Windows
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.gho
