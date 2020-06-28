@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # check if holbertonschool file exists, empty, file type
 
 file="holbertonschool"

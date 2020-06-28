@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # display time for 12 hours and 59 minutes
 
 k=0

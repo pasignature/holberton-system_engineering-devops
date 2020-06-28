@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # show content of actual directory
 
 dirs=$( ls -1 )

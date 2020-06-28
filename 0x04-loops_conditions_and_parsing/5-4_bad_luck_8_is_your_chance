@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # display "Holberton School" 10 times
 
 k="0"

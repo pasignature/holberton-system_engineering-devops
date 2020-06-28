@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-
 # display "Holberton School" 10 times using until loop
 
 k="0"
-
 until [ $k -ge 10 ]
 do
 	echo "Holberton School"
