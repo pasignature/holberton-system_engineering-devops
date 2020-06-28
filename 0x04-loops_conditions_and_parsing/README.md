@@ -7,7 +7,6 @@ Read for this task:
     Windows users
 
 man: ssh-keygen
-
 You will soon have to manage your own servers hosted on remote data centers. We need to set them up with your RSA public key so that you can access them via SSH.
 
 Create a RSA key pair.
