@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
-# goes through an Apache log file and displays the IP/HTTP code of visitors.
+# displays each line of /etc/passwd.
 
-awk '{print $1,$9}' apache-access.log
+tell_the_story_of_passwd="/etc/passwd"
+while IFS=: read -r f1 f2 f3 f4 f5 f6 f7
+do
+    echo "The user $f1 is part of the $f4 gang, lives in $f6 and rides $f7. $f3's place is protected by the passcode $f2, more info about the user here: $f5"
+done < "$tell_the_story_of_passwd"

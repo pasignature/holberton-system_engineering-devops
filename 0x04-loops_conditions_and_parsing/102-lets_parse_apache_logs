@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# reads Apache log file and displays the IP and HTTP code of visitors with total occurences.
+
+$ awk '{ print $1 } ' apache-access.log | sort | uniq | wc -l
