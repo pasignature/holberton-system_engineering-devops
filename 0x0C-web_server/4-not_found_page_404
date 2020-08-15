@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# installs Nginx server, redirects /redirect_me and customizes 404 not found
+#installs Nginx server, redirects /redirect_me and customizes 404 not found
 apt-get -y update
 apt-get -y install nginx
 echo "Holberton School" > /var/www/html/index.html
