@@ -35,18 +35,17 @@ defaults
 	errorfile 504 /etc/haproxy/errors/504.http
 
 frontend http
-	bind *:80
+	mode    tcp
+	bind 34.75.27.131:80
+	bind 34.75.27.131:443 ssl crt /etc/haproxy/certs/letsencrypt/communityin.tech.pem
 	http-request set-header X-Forwarded-Proto http
 	default_backend www-backend
 
 frontend https
-	bind *:443 ssl crt /etc/haproxy/certs/letsencrypt/communityin.tech.pem
-	http-request set-header X-Forwarded-Proto https
-	default_backend www-backend
+	reqadd X-Forwarded-Proto:\ https
+	redirect scheme https if !{ ssl_fc }
 
 backend www-backend
-	mode tcp
 	balance roundrobin
-	redirect scheme https if !{ ssl_fc }
 	server 1730-web-01 34.75.27.131:80 check
 	server 1730-web-02 34.73.20.109:80 check
