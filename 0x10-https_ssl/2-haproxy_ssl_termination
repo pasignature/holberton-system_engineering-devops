@@ -2,7 +2,7 @@ global
         log /dev/log    local0
         log /dev/log    local1 notice
         chroot /var/lib/haproxy
-        stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+        stats socket /run/haproxy/admin.sock mode 660 level admin
         stats timeout 30s
         user haproxy
         group haproxy
@@ -15,9 +15,7 @@ global
         # Default ciphers to use on SSL-enabled listening sockets.
         # For more information, see ciphers(1SSL). This list is from:
         #  https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
-        # An alternative list with additional directives can be obtained from
-        #  https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=haproxy
-        ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS
+        ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS
         ssl-default-bind-options no-sslv3
 
 defaults
@@ -25,7 +23,6 @@ defaults
         mode    http
         option  httplog
         option  dontlognull
-        option  forwardfor
         timeout connect 5000
         timeout client  50000
         timeout server  50000
@@ -39,16 +36,32 @@ defaults
 
 frontend http
         bind *:80
-        http-request set-header X-Forwarded-Proto http
-        default_backend web-backend
+                http-request set-header X-Forwarded-Proto http
+                        default_backend www-backend
 
 frontend www-https
-        bind *:443 ssl crt /etc/haproxy/ssl/www.luisch.tech.pem
-        http-request set-header X-Forwarded-Proto https
-        default_backend web-backend
+		bind *:443 ssl crt /etc/haproxy/certs/letsencrypt/communityin.tech.pem
+		http-request set-header X-Forwarded-Proto https
+		reqadd X-Forwarded-Proto:\ https
+		acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+		use_backend letsencrypt-backend if letsencrypt-acl
+		default_backend www-backend
 
-backend web-backend
+backend www-backend
         balance roundrobin
-        redirect scheme https if !{ ssl_fc }
-        server 938-web-01 35.231.33.237:80 check
-        server 938-web-02 34.74.155.163:80 check
+                redirect scheme https if !{ ssl_fc }
+                        server 1730-web-01 34.75.27.131:80 check
+                        server 1730-web-02 34.73.20.109:80 check
+
+
+# IMPORTANT NOTES:
+#  - Congratulations! Your certificate and chain have been saved at:
+#    /etc/letsencrypt/live/communityin.tech/fullchain.pem
+#    Your key file has been saved at:
+#    /etc/letsencrypt/live/communityin.tech/privkey.pem
+#    Your cert will expire on 2020-11-26. To obtain a new or tweaked
+#    version of this certificate in the future, simply run certbot again
+#    with the "certonly" option. To non-interactively renew *all* of
+#    your certificates, run "certbot renew"
+
+# HAproxy ssl installed in directory /etc/haproxy/certs/letsencrypt/
