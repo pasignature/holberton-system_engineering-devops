@@ -47,6 +47,6 @@ frontend https
 backend www-backend
 	mode tcp
 	balance roundrobin
-	redirect scheme https if !{ ssl_fc }
+	redirect scheme https code 301 if !{ ssl_fc }
 	server 1730-web-01 34.75.27.131:80 check
 	server 1730-web-02 34.73.20.109:80 check
