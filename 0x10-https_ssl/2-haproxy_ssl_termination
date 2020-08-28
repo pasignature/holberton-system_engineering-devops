@@ -39,7 +39,7 @@ frontend http
 	http-request set-header X-Forwarded-Proto http
 	default_backend www-backend
 
-frontend www-https
+frontend https
 	bind *:443 ssl crt /etc/haproxy/certs/letsencrypt/communityin.tech.pem
 	http-request set-header X-Forwarded-Proto https
 	reqadd X-Forwarded-Proto:\ https
@@ -48,10 +48,11 @@ frontend www-https
 	default_backend www-backend
 
 backend www-backend
+	mode tcp
 	balance roundrobin
 	redirect scheme https if !{ ssl_fc }
-	server 1730-web-01 34.75.27.131:80 check
-	server 1730-web-02 34.73.20.109:80 check
+	server 1730-web-01 34.75.27.131:443 check
+	server 1730-web-02 34.73.20.109:443 check
 
 
 # IMPORTANT NOTES:
