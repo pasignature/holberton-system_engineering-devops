@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# display "Holberton School" 10 times
+
+k="1"
+
+while [ $k -le 20 ]
+do
+	echo $k
+	case $k in
+			 4)
+				echo "bad luck from China"
+			 	;;
+			 9)
+				echo "bad luck from Japan"
+			 	;;
+			 17)
+				echo "bad luck from Italy"
+				;;
+	esac
+	k=$((k+1))
+done

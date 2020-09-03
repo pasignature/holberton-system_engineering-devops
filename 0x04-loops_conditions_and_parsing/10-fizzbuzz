@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# displays numbers from 1 to 100
+
+k=1
+while [ $k -lt 101 ]; do
+    if (( k % 15 == 0 )); then
+        echo "FizzBuzz"
+    elif (( k % 3 == 0 )); then
+        echo "Fizz"
+    elif (( k % 5 == 0 )); then
+        echo "Buzz"
+    else
+        echo $k
+    fi
+    let k+=1
+done

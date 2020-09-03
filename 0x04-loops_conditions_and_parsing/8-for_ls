@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# show content of actual directory
+
+dirs=$( ls -1 )
+for k in $dirs
+do
+	find "$k" | cut -d '-' -f2
+done
