@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #sets the port 80 on nginx
 
+sudo rm -r /etc/nginx/sites-enabled/default
 sudo rm -r /etc/nginx/sites-enabled/default~
 sudo sed -i 's/8080/80/g' /etc/nginx/sites-available/default
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
