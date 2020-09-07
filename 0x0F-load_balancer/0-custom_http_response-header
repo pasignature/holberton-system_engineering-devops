@@ -1,9 +1,30 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2154
-#add header X-Served-By XXXXX
-sudo apt-get -y update
-sudo apt-get -y upgrade
-sudo apt-get -y install nginx
-sudo sed -i "11i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
-echo "Holberton School" | sudo tee /var/www/html/index.html
-sudo service nginx restart
+# add header X-Served-By XXXXX
+
+apt-get update
+apt-get install -y nginx
+
+mkdir -p /var/www/html
+touch /var/www/html/index.html
+echo "Holberton School" > /var/www/html/index.html
+touch /var/www/html/custom-404.html
+echo "Ceci n'est pas une page" > /var/www/html/custom-404.html
+
+printf %s "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    add_header X-Served-By $HOSTNAME;
+    root   /var/www/html;
+    index  index.html;
+	
+	location = /redirect_me/ {
+		return 301 https://www.github.com/pasignature;
+	}
+
+    location / {
+		error_page 404 /custom-404.html;
+	}
+}" > /etc/nginx/sites-available/default
+
+service nginx restart
