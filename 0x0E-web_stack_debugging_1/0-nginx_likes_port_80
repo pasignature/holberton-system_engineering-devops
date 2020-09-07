@@ -8,3 +8,4 @@ sudo rm -rf default~
 sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 sudo sed -i 's/8080/80/g' /etc/nginx/sites-available/default
 sudo service nginx restart
+echo 'ok'
