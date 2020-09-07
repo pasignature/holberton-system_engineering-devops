@@ -2,9 +2,9 @@
 #sets the port 80 on nginx
 
 cd /etc/nginx/sites-enabled/
-sudo rm -rf *~
+sudo rm -rf ./*~
 cd /etc/nginx/sites-available/
-sudo rm -rf *~
-sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+sudo rm -rf ./*~
+sudo sed -i 's/8080/80/g' /etc/nginx/sites-available/default
 sudo sed -i 's/8080/80/g' /etc/nginx/sites-available/default
 sudo service nginx restart
