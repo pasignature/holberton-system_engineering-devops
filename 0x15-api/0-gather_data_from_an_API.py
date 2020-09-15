@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" fetches info about employee using Python's requests """
+""" fetches employee info using Python's requests """
 import requests
 import sys
 
