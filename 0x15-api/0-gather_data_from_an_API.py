@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" fetches info about employee using Python's requests and JSONPlaceholder API """
+""" fetches info about employee using Python's requests """
 import requests
 import sys
 
