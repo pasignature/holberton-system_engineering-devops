@@ -3,5 +3,5 @@
 
 exec {'replace':
   provider => shell,
-  command  => 'sed -i "s/phpp/php/g"'
+  command  => 'sed -i "s/phpp/php/g" /var/www/html/'
 }
