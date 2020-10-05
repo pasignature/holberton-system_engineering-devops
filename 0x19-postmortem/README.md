@@ -31,11 +31,11 @@ At 7:19, We restarted the server. By 7:58, 100% of traffic was recovered and eve
 
 ### Corrective and Preventative Measures
 We’ve conducted an internal review and analysis of the outage. The following are actions we are taking to address the causes of the issue and to help prevent recurrence and improve response times:
--we will put measure in place to make sure out DevOps get alerted first before the customer discover any bugs in the future.
+-we will put measures in place to make sure out DevOps get alerted first before the customer discover any bugs in the future.
 -we agreed to implement DataDog APIs to alert the team of any issues.
 -we put measures in place to always test any little changes to avoid such occurences.
 
-We appreciate your patience while we reviewed and fixed the issue. Again, we apologize for the incoviniences experienced and the impact to you, your users and your business. We thank you for your business with us.
+We appreciate your patience while we reviewed and fixed the issue. Again, we apologize for the inconviniences experienced and the impact to you, your users and your business. We thank you for your business with us.
 
 Sincerely,
 The DevOps Team
