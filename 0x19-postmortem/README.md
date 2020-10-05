@@ -6,6 +6,7 @@ By the DevOps Team
 Earlier this week we experienced a network outage in our Consolidatedalliance website. This incident report is provided to give details of the nature of the outage and our responses.
 
 The outage occurred on Friday, June 28, 2019. We know this outage and downtime issue has impacted our valued developers and users, and we apologize to everyone who was affected.
+![alt postmortem humor](https://media-exp1.licdn.com/dms/image/C4D12AQGKdbxtCc8qEQ/article-cover_image-shrink_423_752/0?e=1607558400&v=beta&t=FSaqLVXkxjWnRbjbXb_HAx-qXFwWBVEmzH_vtXb29rU)
 ---
 Issue Summary
 From 6:26 PM to 7:58 PM WAT, requests to most home page of consolidatedalliance.ng resulted in 404 error response messages. Access to other parts of the website were also affected including the login page and booking manager page. The issue affected 80% of traffic to this API infrastructure. Users could continue to access certain parts of the website where you didn't have to go through the home page. The root cause of this outage was an invalid href attribute configuration change in the header file that exposed a bug in the home page. The href attribute specifies the base URL for all relative URLs on a page. It was wrongly set to localhost instead of consolidatedalliance.ng
@@ -42,3 +43,6 @@ The DevOps Team
 ### See complete blog posts on linkedin below  
 1. Incident Report <https://www.linkedin.com/pulse/post-mortem-incident-report-andrew-godwin/>  
 2. Incident Report with humor <https://www.linkedin.com/pulse/post-mortem-incident-report-andrew-godwin-1f>
+
+
+![alt postmortem humor](https://media-exp1.licdn.com/dms/image/C4D12AQG0WS_Eb79o0A/article-inline_image-shrink_1500_2232/0?e=1607558400&v=beta&t=oDJLbml-G3vHCH19Y-gSroCt7l4wQorKlDIFoCiBIL0)
